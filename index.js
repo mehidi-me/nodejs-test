@@ -39,7 +39,6 @@ const client = new MongoClient(uri, {
 // }
 // run().catch(console.dir);
 
-async function run() {
 client.connect();
 
   const cocacolaCollection = client.db('cocacolaDB').collection('cocacola');
@@ -128,8 +127,6 @@ client.connect();
     const result = await userCollection.deleteOne(query);
     res.send(result);
   });
-}
-run().catch(console.dir);
 
 
 

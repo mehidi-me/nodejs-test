@@ -38,8 +38,11 @@ const client = new MongoClient(uri, {
 
 // }
 // run().catch(console.dir);
-
-client.connect();
+client.connect(err => {
+  if (err) {
+      console.error('Error connecting to MongoDB:', err);
+      return;
+  }
 
   const cocacolaCollection = client.db('cocacolaDB').collection('cocacola');
 
@@ -127,6 +130,8 @@ client.connect();
     const result = await userCollection.deleteOne(query);
     res.send(result);
   });
+});
+
 
 
 
